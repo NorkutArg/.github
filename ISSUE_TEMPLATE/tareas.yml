@@ -1,0 +1,39 @@
+name: Tarea
+description: Crear una tarea técnica o funcional
+title: "[Tarea]: "
+labels: ["tarea"]
+body:
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo
+      options: [Feature, Bug, Deuda técnica, Investigación]
+    validations:
+      required: true
+  - type: dropdown
+    id: modulo
+    attributes:
+      label: Módulo
+      options: [Module-CMS, JobScheduler, DataWorkflows, Frontend, Otro]
+    validations:
+      required: true
+  - type: textarea
+    id: contexto
+    attributes:
+      label: Contexto / problema
+      description: El por qué, no solo el qué
+    validations:
+      required: true
+  - type: textarea
+    id: criterios
+    attributes:
+      label: Criterios de aceptación
+      value: |
+        - [ ] 
+        - [ ] 
+    validations:
+      required: true
+  - type: textarea
+    id: notas
+    attributes:
+      label: Notas técnicas / dependencias
