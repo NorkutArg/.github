@@ -14,7 +14,7 @@ body:
     id: modulo
     attributes:
       label: Módulo
-      options: [Module-CMS, JobScheduler, DataWorkflows, Frontend, Otro]
+      options: [Module-CMS, JobScheduler, DataWorkflows, Cloudfunction, DevInfrastructure, ExternalConnectors, Frontend, Module-Analytics, Module-BPM, Module-X]
     validations:
       required: true
   - type: textarea
@@ -24,13 +24,19 @@ body:
       description: El por qué, no solo el qué
     validations:
       required: true
+  - type: dropdown
+    id: esfuerzo
+    attributes:
+      label: Esfuerzo
+      options: [1, 2, 3, 4, 5]
+    validations:
+      required: true
   - type: textarea
     id: criterios
     attributes:
       label: Criterios de aceptación
       value: |
-        - [ ] 
-        - [ ] 
+        - [ ]
     validations:
       required: true
   - type: textarea
