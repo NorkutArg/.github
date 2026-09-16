@@ -88,16 +88,6 @@ body:
     attributes:
       label: Contexto / problema
       description: El por qué, no solo el qué
-    validations:
-      required: true
-
-  - type: dropdown
-    id: esfuerzo
-    attributes:
-      label: Esfuerzo
-      options: [1, 2, 3, 4, 5]
-    validations:
-      required: true
 
   - type: textarea
     id: criterios
