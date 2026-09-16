@@ -1,0 +1,32 @@
+name: Sincronizar repos del template de tareas
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"   # lunes 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Regenerar la lista de repos
+        env:
+          GH_TOKEN: ${{ secrets.ORG_REPOS_TOKEN || github.token }}
+        run: bash scripts/sync-repos.sh
+
+      - name: Abrir PR si cambió
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: chore/sync-repos-template
+          title: "chore: sincronizar repos en el template de tareas"
+          body: |
+            Regenerado por `scripts/sync-repos.sh` desde los repos no archivados
+            de la organización. Revisar altas y bajas antes de mergear.
+          commit-message: "chore: sincronizar repos en el template de tareas"
+          delete-branch: true

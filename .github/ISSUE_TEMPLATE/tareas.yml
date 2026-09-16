@@ -10,13 +10,79 @@ body:
       options: [Feature, Bug, Deuda técnica, Investigación]
     validations:
       required: true
+
   - type: dropdown
-    id: modulo
+    id: repos-afectados
     attributes:
-      label: Módulo
-      options: [Module-CMS, JobScheduler, DataWorkflows, Cloudfunction, DevInfrastructure, ExternalConnectors, Frontend, Module-Analytics, Module-BPM, Module-X]
-    validations:
-      required: true
+      label: Otros repos afectados
+      description: >-
+        Además de este repo. Cada repo adicional = su propia branch (mismo nombre en
+        todos) y su propio PR. Si ya sabés que son varios, creá una sub-issue por repo
+        y colgala de esta.
+      multiple: true
+      options:
+        # BEGIN-REPOS — generado por scripts/sync-repos.sh, no editar a mano
+        - CloudFunctions
+        - DataWorkflows
+        - DevInfrastructure
+        - ExternalConnectors
+        - Front-Auth
+        - Front-BackOffice
+        - Front-BusinessAnalytics
+        - Front-Core
+        - Front-Franchises
+        - Front-Landing
+        - Front-Library
+        - Front-Onboarding
+        - Front-Partners
+        - Front-SupplyChain
+        - FrontFeatures-Analytics
+        - FrontFeatures-CRM
+        - FrontFeatures-Corporate
+        - FrontFeatures-CorporateProvisioning
+        - FrontFeatures-FMS
+        - FrontFeatures-Integrations
+        - FrontFeatures-OPS
+        - FrontFeatures-SCM
+        - FrontFeatures-Settings
+        - InsightCore
+        - JobScheduler
+        - MessagesSender
+        - MicroServiceTemplates
+        - MobileClubApp
+        - Module-Analytics
+        - Module-BPM
+        - Module-CBS
+        - Module-CMS
+        - Module-CORP
+        - Module-CRM
+        - Module-CSS
+        - Module-FMS
+        - Module-FRM
+        - Module-HCM
+        - Module-IA
+        - Module-IMS
+        - Module-Insights
+        - Module-IntegrationBridge
+        - Module-Integrations
+        - Module-LMS
+        - Module-MobileClub
+        - Module-PIM
+        - Module-POS
+        - Module-PRM
+        - Module-PaymentGateways
+        - Module-SRM
+        - Module-SSM
+        - Module-TMS
+        - Module-UMS
+        - OnBoarding
+        - PointOfSaleApp
+        - PyMassTransit
+        - PySecurityDataManager
+        - S3ImageManager
+        - TestAutomation
+        # END-REPOS
+
   - type: textarea
     id: contexto
     attributes:
@@ -24,6 +90,7 @@ body:
       description: El por qué, no solo el qué
     validations:
       required: true
+
   - type: dropdown
     id: esfuerzo
     attributes:
@@ -31,6 +98,7 @@ body:
       options: [1, 2, 3, 4, 5]
     validations:
       required: true
+
   - type: textarea
     id: criterios
     attributes:
@@ -39,7 +107,11 @@ body:
         - [ ]
     validations:
       required: true
+
   - type: textarea
     id: notas
     attributes:
       label: Notas técnicas / dependencias
+      description: >-
+        Si toca varios repos, aclará el orden de merge. Si toca un record de
+        IntegrationEvents, confirmá que el cambio sea aditivo.
